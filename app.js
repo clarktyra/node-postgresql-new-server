@@ -17,13 +17,11 @@ app.get('/fortunes/random', (req, res) => {
 
 app.get('/fortunes/:id', (req, res) => {
     console.log(req.params);
-
     res.json(fortunes.find(f => f.id == req.params.id));
 });
 
 const writeFortunes = json => {
     fs.writeFile('./data/fortunes.json', JSON.stringify(json), err => console.log(err));
-
 }
 
 app.post('/fortunes', (req, res) => {
@@ -67,6 +65,7 @@ app.delete('/fortunes/:id', (req, res) => {
     writeFortunes(new_fortunes);
 
     res.json(new_fortunes);
+    
 });
 
 module.exports = app;
